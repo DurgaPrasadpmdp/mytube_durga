@@ -27,10 +27,10 @@ const VideosPage = () => {
 
   useEffect(() => {
     function fetchMoreVedios(event) {
-      console.log({
-        currentHeight: window.innerHeight + document.documentElement.scrollTop,
-        TotalHeight: document.documentElement.offsetHeight,
-      });
+      // console.log({
+      //   currentHeight: window.innerHeight + document.documentElement.scrollTop,
+      //   TotalHeight: document.documentElement.offsetHeight,
+      // });
       if (
         window.innerHeight + document.documentElement.scrollTop >
         document.documentElement.offsetHeight - 1
