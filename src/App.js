@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { Outlet } from "react-router-dom";
+import "./App.css";
+import SideNavBar from "./Components/SideNavBar";
+import MainNavBar from "./Components/MainNavBar";
+import { useEffect, useState } from "react";
+import MenuContext from "./Utils/Context/MenuContext";
 
 function App() {
+  const [menuOpened, setMenuOpened] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1300) {
+        setMenuOpened(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MenuContext.Provider value={{ menuOpened, setMenuOpened }}>
+      <div>
+        <div>
+          <MainNavBar />
+        </div>
+        <div className="flex gap-[10px]">
+          <SideNavBar />
+          <div className="flex-shrink-1 flex-grow-0">
+            <Outlet />
+          </div>
+        </div>
+      </div>
+    </MenuContext.Provider>
   );
 }
 
