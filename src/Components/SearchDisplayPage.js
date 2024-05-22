@@ -3,14 +3,20 @@ import { getData } from "../Utils/Hepler";
 import { API_KEY, SEARCH_API } from "../Utils/Urls";
 import SearchCard from "./SearchCard";
 import SearchResultShimmer from "../Utils/Shimmers/SearchResultShimmer";
+import { useLocation } from "react-router-dom";
 
-const SearchDisplayPage = () => {
-  const searchParams = new URLSearchParams(window.location.search);
-  const query = searchParams.get("search_query");
+const SearchDisplayPage = ({ showSearcard }) => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  let query = searchParams.get("search_query");
+  if (query == null) {
+    query = "Circket";
+  }
   const [searchedResult, setSearchedResult] = useState([]);
   const [nextPageToken, setNextPageToken] = useState("");
 
   useEffect(() => {
+    setSearchedResult([]);
     getSearchVedios();
 
     return () => {
@@ -61,7 +67,7 @@ const SearchDisplayPage = () => {
     <div>
       {searchedResult.length > 0 ? (
         searchedResult.map((value) => {
-          return <SearchCard cardDetails={value} />;
+          return <SearchCard cardDetails={value} watchPage={showSearcard} />;
         })
       ) : (
         <SearchResultShimmer />

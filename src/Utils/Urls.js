@@ -14,3 +14,6 @@ export const SEARCH_API =
 
 export const CHANNEL_DETAILS =
   "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=";
+
+export const VEDIO_DETAILS =
+  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=";

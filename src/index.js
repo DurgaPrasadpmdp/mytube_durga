@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import SideNavBar from "./Components/SideNavBar";
 import VideosPage from "./Components/VideosPage";
 import SearchDisplayPage from "./Components/SearchDisplayPage";
+import WatchPage from "./Components/WatchPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const routerConfig = createBrowserRouter([
@@ -20,7 +21,7 @@ const routerConfig = createBrowserRouter([
       },
       {
         path: "/watch",
-        element: <SideNavBar />,
+        element: <WatchPage />,
       },
       {
         path: "/results",

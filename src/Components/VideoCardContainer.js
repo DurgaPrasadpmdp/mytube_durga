@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { convertCounttoShort, convertPlayTime, getData } from "../Utils/Hepler";
 import { API_KEY, CHANNEL_DETAILS } from "../Utils/Urls";
+import { useNavigate } from "react-router-dom";
 
 const VideoCardContainer = (props) => {
-  const { snippet, statistics, contentDetails } = props?.cardDetails;
+  const { snippet, statistics, contentDetails, id } = props?.cardDetails;
   const { thumbnails } = snippet;
   const [channelThumbnail, setChannelThumbnail] = useState("");
   const channelId = snippet.channelId;
@@ -15,7 +16,10 @@ const VideoCardContainer = (props) => {
     const thumbnail = channelData?.items[0]?.snippet.thumbnails?.default?.url;
     setChannelThumbnail(thumbnail);
   }
-
+  const navigate = useNavigate();
+  const gotoWatchPage = () => {
+    navigate("/watch?v=" + id);
+  };
   useEffect(() => {
     getChannelDetails();
   }, []);
@@ -29,7 +33,7 @@ const VideoCardContainer = (props) => {
         setisEllipseMenu(false);
       }}
     >
-      <div className="relative w-[100%]">
+      <div className="relative w-[100%]" onClick={gotoWatchPage}>
         <img
           className=" rounded-[12px] hover:rounded-none w-[100%] "
           src={thumbnails?.medium?.url}
