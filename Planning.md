@@ -32,3 +32,12 @@ curl \
  --header 'Authorization: Bearer [YOUR_ACCESS_TOKEN]' \
  --header 'Accept: application/json' \
  --compressed
+
+[pending work]
+
+-> search optimization
+-> header - profile Info
+-> watchLater,History
+-> playlist functionalites
+-> subscribe unsubscribe
+-> header top suggestions

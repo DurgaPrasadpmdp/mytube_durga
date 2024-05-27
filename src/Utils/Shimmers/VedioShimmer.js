@@ -3,7 +3,7 @@ const VedioShimmer = () => {
   return (
     <div className="flex flex-wrap ">
       {shimArr.map((it) => {
-        return <Shimmer />;
+        return <Shimmer key={it} />;
       })}
     </div>
   );

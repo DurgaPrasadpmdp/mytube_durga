@@ -1,5 +1,5 @@
-//export const API_KEY = "AIzaSyDnHT1-U9hQfolJ_mKXnkQ31nbk-ECsPgI";
-export const API_KEY = "AIzaSyBm281in4PNTN9CcX0vhgm8dZmcfRZjX_A";
+export const API_KEY = "AIzaSyConx9thWedBpeV2hL5K8G2frEdpUYGaw0";
+//export const API_KEY = "AIzaSyBm281in4PNTN9CcX0vhgm8dZmcfRZjX_A";
 
 export const CLIENT_ID =
   "774755833617-pjeskprouncefb5h65n9a27898pq7nm0.apps.googleusercontent.com";
@@ -17,3 +17,16 @@ export const CHANNEL_DETAILS =
 
 export const VEDIO_DETAILS =
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=";
+
+export const SUBSCRIPTION_API =
+  "https://youtube.googleapis.com/youtube/v3/subscriptions?part=snippet%2CcontentDetails&mine=true&forChannelId=";
+
+export const GET_SUBS_LIST =
+  "https://content-youtube.googleapis.com/youtube/v3/subscriptions?mine=true&maxResults=20&part=snippet%2CcontentDetails&key=" +
+  API_KEY;
+
+export const GET_COMMENTS =
+  "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet&maxResults=20&order=relevance&textFormat=plainText&videoId=";
+
+export const GET_REPLY_CPOMMENTS =
+  "https://youtube.googleapis.com/youtube/v3/comments?part=snippet&parentId=";

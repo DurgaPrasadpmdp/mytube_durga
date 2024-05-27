@@ -4,12 +4,15 @@ import MenuContext from "../Utils/Context/MenuContext";
 import { getData } from "../Utils/Hepler";
 import { SUGGESTIONS_API } from "../Utils/Urls";
 import { Link, useNavigate } from "react-router-dom";
+import AuthTokenContext from "../Utils/Context/AuthTokenContext";
 
 const MainNavBar = () => {
   const { menuOpened, setMenuOpened } = useContext(MenuContext);
   const [searchText, SetSearchText] = useState("");
   const [suggestions, SetSuggestions] = useState([]);
   const [issearchFocus, setSearchFocus] = useState(false);
+  const { token } = useContext(AuthTokenContext);
+  console.log(token);
   const navigate = useNavigate();
   useEffect(() => {
     let timeout = setTimeout(() => {
@@ -75,13 +78,19 @@ const MainNavBar = () => {
               navigate("/results?search_query=" + searchText);
             }}
           >
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i className="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
 
-        <div className="flex-shrink-0 text-[10px] sm:text-[20px] md:text-[30px] mr-[30px]">
+        <div
+          className="flex-shrink-0 text-[10px] sm:text-[20px] md:text-[25px] mr-[30px] text-blue-600 border border-solid border-gray-300 pl-4 rounded-2xl pr-4 pt-1 pb-1 cursor-pointer"
+          onClick={() => {
+            navigate("/login");
+          }}
+        >
           <span>
-            <i class="fa-regular fa-user"></i>
+            <i className="fa-regular fa-user mr-2"></i>
+            <span className="">{token?.length ? "" : "Sign in"}</span>
           </span>
         </div>
       </div>

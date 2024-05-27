@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -8,6 +8,8 @@ import SideNavBar from "./Components/SideNavBar";
 import VideosPage from "./Components/VideosPage";
 import SearchDisplayPage from "./Components/SearchDisplayPage";
 import WatchPage from "./Components/WatchPage";
+import Login from "./Components/Login";
+import Subscriptions from "./Components/Subscrpitons";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const routerConfig = createBrowserRouter([
@@ -26,6 +28,14 @@ const routerConfig = createBrowserRouter([
       {
         path: "/results",
         element: <SearchDisplayPage />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/subscriptions",
+        element: <Subscriptions />,
       },
     ],
   },

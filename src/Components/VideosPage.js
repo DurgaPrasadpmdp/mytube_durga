@@ -56,7 +56,7 @@ const VideosPage = ({ showSearcard }) => {
             vedioList.map((Vd) => {
               return (
                 <>
-                  <VideoCardContainer cardDetails={Vd} />
+                  <VideoCardContainer Key={Vd?.id} cardDetails={Vd} />
                 </>
               );
             })}
@@ -67,7 +67,13 @@ const VideosPage = ({ showSearcard }) => {
   ) : (
     vedioList.length > 0 &&
       vedioList.map((vedios) => {
-        return <SearchCard cardDetails={vedios} watchPage={showSearcard} />;
+        return (
+          <SearchCard
+            Key={vedios.id}
+            cardDetails={vedios}
+            watchPage={showSearcard}
+          />
+        );
       })
   );
 };

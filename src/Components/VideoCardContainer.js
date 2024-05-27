@@ -25,6 +25,7 @@ const VideoCardContainer = (props) => {
   }, []);
   return (
     <div
+      key={id}
       className="cursor-pointer w-[400px]   flex-shrink-0"
       onMouseEnter={() => {
         setisEllipseMenu(true);
@@ -59,7 +60,7 @@ const VideoCardContainer = (props) => {
           <div className="text-twolines"> {snippet?.title}</div>
           {isEllipseMenu && (
             <span className="absolute top-[2px] right-[10px]">
-              <i class="fa-solid fa-ellipsis-vertical"></i>
+              <i className="fa-solid fa-ellipsis-vertical"></i>
             </span>
           )}
           <div>

@@ -1,14 +1,26 @@
-export async function getData(url, corsO = true) {
-  const nocors = {
-    mode: "no-cors",
-  };
+import Cookies from "js-cookie";
 
-  const cors = {
-    mode: "cors",
-  };
-  const streamingData = await fetch(url, corsO ? cors : nocors);
+export async function getData(url, includeToken) {
+  const streamingData = await fetch(url);
   const jsonResponse = await streamingData.json();
+  if (!streamingData.ok) {
+    throw new Error(jsonResponse.error.message);
+  }
+  return jsonResponse;
+}
 
+export async function getDatawithToken(url) {
+  // getData(url, true);
+  const options = {
+    headers: {
+      Authorization: "Bearer " + Cookies.get("authCookie"),
+    },
+  };
+  const streamingData = await fetch(url, options);
+  const jsonResponse = await streamingData.json();
+  if (!streamingData.ok) {
+    throw new Error(jsonResponse.error.message);
+  }
   return jsonResponse;
 }
 
@@ -32,4 +44,10 @@ export function convertPlayTime(playString) {
   //   const min = time[1].split("M")[0];
   //   const sec = time[1].split("M")[1];
   //   return `${min}:${sec.split("S")[0]}`;
+}
+
+export function checkLogin() {
+  const userLoginString = localStorage.getItem("login") || false;
+  const userLogin = userLoginString === "false" ? false : true;
+  return userLogin;
 }

@@ -3,7 +3,7 @@ import VideosPage from "./VideosPage";
 
 const WatchPageSuggestions = () => {
   return (
-    <div>
+    <div className="pt-[80px] md:pt-0">
       <VideosPage showSearcard={true} />
       {/* {<SearchDisplayPage showSearcard={true} />} */}
     </div>

@@ -4,9 +4,15 @@ import SideNavBar from "./Components/SideNavBar";
 import MainNavBar from "./Components/MainNavBar";
 import { useEffect, useState } from "react";
 import MenuContext from "./Utils/Context/MenuContext";
+import AuthTokenContext from "./Utils/Context/AuthTokenContext";
+import Cookies from "js-cookie";
 
 function App() {
   const [menuOpened, setMenuOpened] = useState(true);
+  const [token, setToken] = useState("");
+
+  const loginCookie = Cookies.get("authCookie");
+  localStorage.setItem("login", loginCookie?.length ? true : false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,19 +27,21 @@ function App() {
     };
   }, []);
   return (
-    <MenuContext.Provider value={{ menuOpened, setMenuOpened }}>
-      <div>
+    <AuthTokenContext.Provider value={{ token, setToken }}>
+      <MenuContext.Provider value={{ menuOpened, setMenuOpened }}>
         <div>
-          <MainNavBar />
-        </div>
-        <div className="flex gap-[10px]">
-          <SideNavBar />
-          <div className="flex-shrink-1 flex-grow-0">
-            <Outlet />
+          <div>
+            <MainNavBar />
+          </div>
+          <div className="flex gap-[10px]">
+            <SideNavBar />
+            <div className="flex-shrink-1 flex-grow-0">
+              <Outlet />
+            </div>
           </div>
         </div>
-      </div>
-    </MenuContext.Provider>
+      </MenuContext.Provider>
+    </AuthTokenContext.Provider>
   );
 }
 
