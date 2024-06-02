@@ -51,3 +51,7 @@ export function checkLogin() {
   const userLogin = userLoginString === "false" ? false : true;
   return userLogin;
 }
+
+export function add(x, y) {
+  return x + y;
+}
