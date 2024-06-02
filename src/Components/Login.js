@@ -40,7 +40,9 @@ const Login = () => {
         client_id:
           "618418161950-diorgljr65lt2g1f2pkcoh8if5m0ol2u.apps.googleusercontent.com",
         response_type: "token",
-        redirect_uri: "http://localhost:3000/login",
+        redirect_uri: window.location.href.includes("localhost")
+          ? "http://localhost:3000/login"
+          : "https://my-tube-77df4.web.app/",
         scope:
           "https://www.googleapis.com/auth/youtube.force-ssl https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile",
         include_granted_scopes: "true",
